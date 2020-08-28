@@ -1,0 +1,22 @@
+{
+  "name": "gitlabstatisticsprometheusexporter",
+  "version": "1.0.0",
+  "description": "Gitlab Statistics Prometheus Exporter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epfl-dojo/GitlabStatisticsPrometheusExporter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epfl-dojo/GitlabStatisticsPrometheusExporter/issues"
+  },
+  "homepage": "https://github.com/epfl-dojo/GitlabStatisticsPrometheusExporter#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
