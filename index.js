@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
     res.send("Internal Error")
   })
 })
-
+app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 app.listen(port, () => {
   console.log(`Gitlab Metrics is listening on port ${port}`)
 })
