@@ -1,6 +1,6 @@
 {
   "name": "gitlabstatisticsprometheusexporter",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Gitlab Statistics Prometheus Exporter",
   "main": "index.js",
   "scripts": {
