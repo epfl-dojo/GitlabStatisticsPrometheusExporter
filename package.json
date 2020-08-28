@@ -20,5 +20,12 @@
   "dependencies": {
     "express": "^4.17.1",
     "node-fetch": "^2.6.0"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
   }
 }
