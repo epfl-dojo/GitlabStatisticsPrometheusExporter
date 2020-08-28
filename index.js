@@ -24,7 +24,10 @@ function json_to_metrics(json) {
 app.get('/', (req, res) => {
   fetch(apiurl, { headers: {'PRIVATE-TOKEN': privateToken}})
   .then(res => res.json())
-  .then(json => res.send(json_to_metrics(json)))
+  .then(json => {
+    res.type('text/plain; charset=utf-8')
+    res.send(json_to_metrics(json))
+  })
   .catch( (e) => { 
     console.error(e)
     res.send("Internal Error")
