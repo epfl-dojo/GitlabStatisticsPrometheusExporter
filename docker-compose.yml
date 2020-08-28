@@ -8,8 +8,9 @@ services:
       - NODE_ENV=production
       - PRIVATE_TOKEN=${PRIVATE_TOKEN}
       - GITLAB_URL=${GITLAB_URL:-https://gitlab.epfl.ch}
+      - PORT=${PORT:-3000}
     volumes:
       - ./:/home/node/app
     ports:
-      - "3000:3000"
+      - "${PORT:-3000}:${PORT:-3000}"
     command: "npm start"
