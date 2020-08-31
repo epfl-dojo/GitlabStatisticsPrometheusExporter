@@ -75,7 +75,10 @@ function validate_url(url, p) {
 
 const json_to_metrics = (json) => {
   let metrics = ''
-  let labels = (process.env.LABELS !== '') ? `{${process.env.LABELS}}` : ''
+  let labels =
+    typeof process.env.LABELS !== 'undefined' && process.env.LABELS !== ''
+      ? `{${process.env.LABELS}}`
+      : ''
   for (const [k, v] of Object.entries(json)) {
     const l1 = `# HELP gitlab_${k}_total The total number or ${k}`
     const l2 = `# TYPE gitlab_${k}_total counter`

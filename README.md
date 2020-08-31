@@ -130,7 +130,7 @@ List a commands that can be used in a development cycle:
     `docker build -t epfldojo/gitlabstatisticsprometheusexporter .`
   * Run image:  
 ```
-docker run -d \
+docker run -d --rm \
            --name GitlabStatsExporter \
            -e PRIVATE_TOKEN=$PRIVATE_TOKEN \
            -e GITLAB_URL=$GITLAB_URL \
