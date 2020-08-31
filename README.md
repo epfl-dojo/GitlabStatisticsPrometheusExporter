@@ -1,21 +1,52 @@
 # Gitlab Statistics Prometheus Exporter
 
-This is a really simple prometheus exporter for gitlab statistics.
+<!-- TOC titleSize:2 tabSpaces:2 depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 skip:1 title:1 charForUnorderedList:* -->
+## Table of Contents
+* [About](#about)
+  * [Note](#note)
+* [Usage](#usage)
+  * [Options](#options)
+  * [Docker run](#docker-run)
+  * [Docker-compose](#docker-compose)
+  * [Pure node](#pure-node)
+* [Output example](#output-example)
+* [Development](#development)
+  * [Guidelines](#guidelines)
+<!-- /TOC -->
 
-It takes the gitlab statistics from the API
+
+## About
+
+This is a really simple prometheus exporter for Gitlab statistics.
+
+It takes the Gitlab statistics from the API
 (https://docs.gitlab.com/ce/api/statistics.html) and format them as prometheus
 metrics.
 
 
-## Note
+### Note
 
-You have to be an administrator in order to access to the gitlab instance 
+You have to be an administrator in order to access to the Gitlab instance 
 statistics. For that reason, the `PRIVATE_TOKEN` (aka Personal Access Tokens) 
 your are using needs to be issued by an administrator. The scope is `api` 
 (Grants complete read/write access to the API, including all groups and 
 projects, the container registry, and the package registry).
 
+
 ## Usage
+
+### Options
+
+| Variable          |*| Description                                           |
+|-------------------|-|-------------------------------------------------------|
+| `PRIVATE_TOKEN`   |*| Gitlab private token, with admin access and api scope |
+| `GITLAB_URL`      |*| The Gitlab instance to connect to                     |
+| `API_PATH`        | | Default to `/api/v4/application/statistics`           |
+| `PORT`            | | Internal port used. Default to `3000`                 |
+| `LABELS`          | | Labels to be added to each metrics. Default `none`    |
+
+`*` Mandatory
+
 
 ### Docker run
 
@@ -46,7 +77,6 @@ Clone this
 [repo](https://github.com/epfl-dojo/GitlabStatisticsPrometheusExporter) and run
 `npm start`. The `PRIVATE_TOKEN` and `GITLAB_URL` environment variables have to
 be set.
-
 
 
 ## Output example
@@ -92,17 +122,31 @@ gitlab_active_users_total 2086
 
 ## Development
 
+List a commands that can be used in a development cycle:
+
+  * Remove existing image:  
+    `docker rm -f GitlabStatsExporter`
+  * Build image:  
+    `docker build -t epfldojo/gitlabstatisticsprometheusexporter .`
+  * Run image:  
 ```
-docker build -t epfldojo/gitlabstatisticsprometheusexporter .
-docker tag epfldojo/gitlabstatisticsprometheusexporter:latest epfldojo/gitlabstatisticsprometheusexporter:v1.0.2
 docker run -d \
            --name GitlabStatsExporter \
            -e PRIVATE_TOKEN=$PRIVATE_TOKEN \
            -e GITLAB_URL=$GITLAB_URL \
            -p 3000:3000 \
            epfldojo/gitlabstatisticsprometheusexporter
-docker logs -f GitlabStatsExporter
-http localhost:3000
-docker rm -f GitlabStatsExporter
-docker push epfldojo/gitlabstatisticsprometheusexporter:latest epfldojo/gitlabstatisticsprometheusexporter:v1.0.2
 ```
+  * Check the logs:  
+    `docker logs -f GitlabStatsExporter`
+  * Send a request:  
+    `http localhost:3000`
+  * Tag image:  
+    `docker tag epfldojo/gitlabstatisticsprometheusexporter:latest epfldojo/gitlabstatisticsprometheusexporter:v$(jq -r ".version" package.json)`
+  * Push image:  
+    `docker push epfldojo/gitlabstatisticsprometheusexporter:latest; docker push epfldojo/gitlabstatisticsprometheusexporter:v$(jq -r ".version" package.json)`
+
+### Guidelines
+
+  * [writing exporters](https://prometheus.io/docs/instrumenting/writing_exporters/)
+  * [best practices on metric naming](https://prometheus.io/docs/practices/naming/)

@@ -1,6 +1,6 @@
 {
   "name": "gitlabstatisticsprometheusexporter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gitlab Statistics Prometheus Exporter",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
   "homepage": "https://github.com/epfl-dojo/GitlabStatisticsPrometheusExporter#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "winston": "^3.3.3"
   },
   "prettier": {
     "trailingComma": "es5",
