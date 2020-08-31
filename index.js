@@ -81,7 +81,7 @@ const json_to_metrics = (json) => {
       : ''
   for (const [k, v] of Object.entries(json)) {
     const l1 = `# HELP gitlab_${k}_total The total number or ${k}`
-    const l2 = `# TYPE gitlab_${k}_total counter`
+    const l2 = `# TYPE gitlab_${k}_total gauge`
     const l3 = `gitlab_${k}_total${labels} ${v.replace(',', '')}`
     metrics += [l1, l2, l3].join('\n') + '\n'
   }

@@ -85,38 +85,38 @@ be set.
 $ http -b localhost:3000
 
 # HELP gitlab_forks_total The total number or forks
-# TYPE gitlab_forks_total counter
+# TYPE gitlab_forks_total gauge
 gitlab_forks_total 227
 # HELP gitlab_issues_total The total number or issues
-# TYPE gitlab_issues_total counter
-gitlab_issues_total 2592
+# TYPE gitlab_issues_total gauge
+gitlab_issues_total 2598
 # HELP gitlab_merge_requests_total The total number or merge_requests
-# TYPE gitlab_merge_requests_total counter
-gitlab_merge_requests_total 4006
+# TYPE gitlab_merge_requests_total gauge
+gitlab_merge_requests_total 4015
 # HELP gitlab_notes_total The total number or notes
-# TYPE gitlab_notes_total counter
-gitlab_notes_total 67334
+# TYPE gitlab_notes_total gauge
+gitlab_notes_total 67302
 # HELP gitlab_snippets_total The total number or snippets
-# TYPE gitlab_snippets_total counter
+# TYPE gitlab_snippets_total gauge
 gitlab_snippets_total 47
 # HELP gitlab_ssh_keys_total The total number or ssh_keys
-# TYPE gitlab_ssh_keys_total counter
-gitlab_ssh_keys_total 1767
+# TYPE gitlab_ssh_keys_total gauge
+gitlab_ssh_keys_total 1771
 # HELP gitlab_milestones_total The total number or milestones
-# TYPE gitlab_milestones_total counter
+# TYPE gitlab_milestones_total gauge
 gitlab_milestones_total 89
 # HELP gitlab_users_total The total number or users
-# TYPE gitlab_users_total counter
-gitlab_users_total 2091
+# TYPE gitlab_users_total gauge
+gitlab_users_total 2094
 # HELP gitlab_projects_total The total number or projects
-# TYPE gitlab_projects_total counter
+# TYPE gitlab_projects_total gauge
 gitlab_projects_total 2942
 # HELP gitlab_groups_total The total number or groups
-# TYPE gitlab_groups_total counter
+# TYPE gitlab_groups_total gauge
 gitlab_groups_total 324
 # HELP gitlab_active_users_total The total number or active_users
-# TYPE gitlab_active_users_total counter
-gitlab_active_users_total 2086
+# TYPE gitlab_active_users_total gauge
+gitlab_active_users_total 2089
 ```
 
 
