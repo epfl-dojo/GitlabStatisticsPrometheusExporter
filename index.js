@@ -88,7 +88,7 @@ const json_to_metrics = (json) => {
   return metrics
 }
 
-app.get('/', (req, res) => {
+function serve_statistics(req, res) {
   fetch(target, { headers: { 'PRIVATE-TOKEN': private_token } })
     .then((res) => res.json())
     .then((json) => {
@@ -99,7 +99,9 @@ app.get('/', (req, res) => {
       logger.error(e)
       res.send('Internal Error')
     })
-})
+}
+app.get('/', serve_statistics)
+app.get('/metrics', serve_statistics)
 app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 app.listen(port, () => {
   logger.info(`Gitlab Statistics Prometheus Exporter is listening on port ${port}`)
